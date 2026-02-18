@@ -1,0 +1,8 @@
+# Archivo: alacritty.toml.template
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.selection]
+text = "#313244"
+background = "#cba6f7"

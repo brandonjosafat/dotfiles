@@ -187,21 +187,21 @@ bindsym $mod+r mode "resize"
 # --- ~/.config/i3/config.template ---
 # 1. Bordes de las ventanas (Fuera del bloque bar)
 #                      Borde         Fondo        Texto     Indicador   BordeHijo
-client.focused          #cba6f7  #1e1e2e     #cdd6f4  #cba6f7 #cba6f7
-client.unfocused        #313244  #1e1e2e     #cdd6f4  #313244 #313244
+client.focused          #f39c12  #1a1816     #d6c0a5  #e67e22 #f39c12
+client.unfocused        #2d2a26  #1a1816     #d6c0a5  #2d2a26 #2d2a26
 
 # 2. La barra
 bar {
     status_command i3status --config ~/.config/i3status/config
     colors {
-        background #1e1e2e
-        statusline #cdd6f4
-        separator  #cba6f7   # <-- Usamos BORDER para que sea naranja en Sunset
+        background #1a1816
+        statusline #d6c0a5
+        separator  #f39c12   # <-- Usamos BORDER para que sea naranja en Sunset
         
         #              Borde         Fondo        Texto
-        focused_workspace  #cba6f7  #cba6f7 #1e1e2e
-        active_workspace   #313244  #313244 #cdd6f4
-        inactive_workspace #1e1e2e      #1e1e2e     #cdd6f4
+        focused_workspace  #f39c12  #f39c12 #1a1816
+        active_workspace   #2d2a26  #2d2a26 #d6c0a5
+        inactive_workspace #1a1816      #1a1816     #d6c0a5
     }
 }
 

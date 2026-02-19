@@ -1,0 +1,17 @@
+# Icons
+
+# Formato: [extensión/tipo] [icono]
+ln             # Enlace
+or             # Huérfano
+di      󰉋       # Directorio (Este código suele fallar menos que el anterior)
+fi      󰈔       # Archivo regular
+ex      󱆃       # Ejecutable (Cohete)
+
+# Extensiones comunes
+*.sh    󱆃
+*.py    
+*.pdf   
+*.jpg   󰈟
+*.png   󰈟
+*.zip   
+*.tar   

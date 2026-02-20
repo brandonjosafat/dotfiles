@@ -163,14 +163,13 @@ map C clear
 
 
 map gc cd ~/.config
-map gd cd ~/Documents
+map gd cd ~/Documentos
 #map gd cd ~/downloads
 map gp cd ~/pictures
-#map gr cd ~/repos
+map gr cd ~/dotfiles
 map gi cd ~/Imágenes
 map gv cd ~/videos
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files
 map gw cd /mnt/windows/Users/Brandon
-map gr cd ~/dotfiles
 

@@ -1,9 +1,12 @@
 export LS_OPTIONS='--color=auto'
-eval "$(dircolors -b)"
+#eval "$(dircolors -b)"
+#cargar colores dinámicos
+[ -f "$HOME/.cache/current_colors.sh" ] && source "$HOME/.cache/current_colors.sh"
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -l'
 alias l='ls $LS_OPTIONS -lA'
-
+alias lf='LS_COLORS="$LS_COLORS" lf'
+alias src='source ~/.bashrc'
 export PATH="$PATH:$HOME/scripts/dmenu"
 export PATH="$HOME/.local/bin:$PATH"
 export MY_THEMES="$HOME/scripts/dmenu/themes"

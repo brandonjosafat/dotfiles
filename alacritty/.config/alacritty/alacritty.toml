@@ -1,8 +1,18 @@
 # Archivo: alacritty.toml.template
 [colors.primary]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#2e3440"
+foreground = "#eceff4"
 
 [colors.selection]
-text = "#313244"
-background = "#cba6f7"
+text = "#3b4252"
+background = "#88c0d0"
+
+[window] #1.0 es opaco, 0.0 es invisible.
+opacity = 0.85
+# Importnte: esto ayuda a que el fondo no distraiga tanto
+blur = true
+
+#Margen del texto
+# [window.padding]
+# x = 10
+# y = 10

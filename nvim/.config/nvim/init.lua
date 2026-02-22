@@ -163,8 +163,9 @@ vim.opt.shiftwidth = 4
 
 -- Función para ejecutar el archivo según su tipo
 local function ejecutar_archivo()
-	vim.cmd("w") -- siempre guarda antes de ejecutar
+	vim.cmd("silent w") -- siempre guarda antes de ejecutar
 	local ft = vim.bo.filetype -- detecta el tipo de archivo (python, sh, etc.)
+--	print("\n--- Ejecutando " .. ft .. " ---\n") -- separador visual limpio
 	if ft == "python" then
 		vim.cmd("!python3 %")
 	elseif ft == "sh" then
@@ -182,7 +183,7 @@ end
 
 
 -- Guardar automáticamente al perder el foco o salir del modo insertar
-vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "FocusLost", "BufLeave" }, { --InsertLeave
   callback = function()
     if vim.bo.modified and vim.fn.expand("%") ~= "" then
       vim.cmd("silent! update")

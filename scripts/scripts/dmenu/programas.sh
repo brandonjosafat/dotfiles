@@ -13,7 +13,7 @@ source "$HOME/scripts/dmenu/themes/template"
 export CURRENT_THEME="$HOME/scripts/dmenu/themes/template"
 
 # Definimos las opciones con una letra al principio para elegir rápido
-opciones="v -> Neovim\nf -> Firefox\na -> Archivos (Buscador)\nw -> WiFi\nt -> Temporizador\np -> Power Menu\ns -> screenshot\ni -> inkscape\nc -> apariencia\nn -> notes.sh\ne -> thunar\nk -> krita"
+opciones="v -> Neovim\nf -> Firefox\na -> Archivos (Buscador)\nw -> WiFi\nt -> Temporizador\np -> Power Menu\ns -> screenshot\ni -> inkscape\nc -> apariencia\nn -> notes.sh\ne -> thunar\nk -> krita\nh -> chrome"
 
 # Lanzamos dmenu
 # -i (ignorar mayúsculas), -l 10 (lista vertical), -p (el título del menú)
@@ -27,6 +27,7 @@ case "$accion" in
 
     v) alacritty -e nvim ;;
     f) firefox ;;
+	h) google-chrome-stable ;;
 	i) inkscape ;;
 	e) thunar ;;
     a) busqueda.sh ;; 

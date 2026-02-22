@@ -1,6 +1,7 @@
 set previewer ~/.config/lf/previewer
 
 # Basic Settings
+#set colors
 set info size
 set preview true
 set drawbox true
@@ -163,10 +164,10 @@ map C clear
 
 
 map gc cd ~/.config
-map gd cd ~/Documents
-#map gd cd ~/downloads
-map gp cd ~/pictures
-map gr cd ~/repos
+map ga cd ~/Documentos
+map gd cd ~/Descargas
+map gp cd ~/scripts
+map gr cd ~/dotfiles
 map gi cd ~/Imágenes
 map gv cd ~/videos
 map gs cd ~/.local/bin

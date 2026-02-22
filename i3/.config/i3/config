@@ -94,7 +94,7 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+o fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -187,21 +187,21 @@ bindsym $mod+r mode "resize"
 # --- ~/.config/i3/config.template ---
 # 1. Bordes de las ventanas (Fuera del bloque bar)
 #                      Borde         Fondo        Texto     Indicador   BordeHijo
-client.focused          #cba6f7  #1e1e2e     #cdd6f4  #cba6f7 #cba6f7
-client.unfocused        #313244  #1e1e2e     #cdd6f4  #313244 #313244
+client.focused          #81a1c1  #2e3440     #eceff4  #88c0d0 #81a1c1
+client.unfocused        #3b4252  #2e3440     #eceff4  #3b4252 #3b4252
 
 # 2. La barra
 bar {
     status_command i3status --config ~/.config/i3status/config
     colors {
-        background #1e1e2e
-        statusline #cdd6f4
-        separator  #cba6f7   # <-- Usamos BORDER para que sea naranja en Sunset
+        background #2e3440
+        statusline #eceff4
+        separator  #81a1c1   # <-- Usamos BORDER para que sea naranja en Sunset
         
         #              Borde         Fondo        Texto
-        focused_workspace  #cba6f7  #cba6f7 #1e1e2e
-        active_workspace   #313244  #313244 #cdd6f4
-        inactive_workspace #1e1e2e      #1e1e2e     #cdd6f4
+        focused_workspace  #81a1c1  #81a1c1 #2e3440
+        active_workspace   #3b4252  #3b4252 #eceff4
+        inactive_workspace #2e3440      #2e3440     #eceff4
     }
 }
 
@@ -235,4 +235,6 @@ for_window [class="^.*"] border pixel 1
 # Solo una combinación ergonómica (Win + p o Win + Space)
 bindsym $mod+p exec --no-startup-id /home/brandon/scripts/dmenu/programas.sh
 
-#se modificó?
+#restaurar el último wallpaper puesto por feh
+exec_always --no-startup-id sh ~/.fehbg
+exec_always --no-startup-id picom --backend glx

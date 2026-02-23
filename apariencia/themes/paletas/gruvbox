@@ -1,0 +1,6 @@
+# Archivo: ~/themes/paletas/gruvbox
+export COLOR_BG='#282828'     # Cacao oscuro (no negro)
+export COLOR_FG='#ebdbb2'     # Arena clara
+export COLOR_ACCENT='#d79921'   # Oro viejo
+export COLOR_SELECT='#3c3836'   # Gris roca
+export COLOR_BORDER='#fb4934'   # Rojo ladrillo desaturado

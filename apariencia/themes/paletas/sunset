@@ -1,0 +1,6 @@
+# Archivo: ~/themes/paletas/sunset
+export COLOR_BG='#1a1816'
+export COLOR_FG='#d6c0a5'
+export COLOR_ACCENT='#e67e22'
+export COLOR_SELECT='#2d2a26'
+export COLOR_BORDER='#f39c12'  # Cambiamos EXTRA por BORDER para que el script lo encuentre

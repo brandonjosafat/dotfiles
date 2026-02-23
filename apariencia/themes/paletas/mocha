@@ -1,0 +1,6 @@
+# Archivo: ~/themes/paletas/mocha
+export COLOR_BG='#1e1e2e'
+export COLOR_FG='#cdd6f4'
+export COLOR_ACCENT='#cba6f7'
+export COLOR_SELECT='#313244'
+export COLOR_BORDER='#cba6f7'

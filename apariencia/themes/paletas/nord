@@ -1,0 +1,6 @@
+# Archivo: ~/themes/paletas/nord
+export COLOR_BG='#2e3440'     # Azul polar profundo
+export COLOR_FG='#eceff4'     # Blanco nieve
+export COLOR_ACCENT='#88c0d0'   # Azul escarcha
+export COLOR_SELECT='#3b4252'   # Azul pizarra
+export COLOR_BORDER='#81a1c1'   # Azul acero

@@ -26,6 +26,18 @@ esac
 # Generar caché de colores para Bash y LF
 echo "export LS_COLORS=\"di=$FOLDER_COLOR\"" > "$HOME/.cache/current_colors.sh"
 
+# Dentro de apariencia.sh, antes del procesamiento de archivos
+case "$seleccion" in
+    "sunset")     NVIM_THEME="rose-pine" ;; 
+    "everforest") NVIM_THEME="everforest" ;;
+    "nord")       NVIM_THEME="nord" ;;
+    "mocha")      NVIM_THEME="catppuccin-mocha" ;;
+    "gruvbox")    NVIM_THEME="gruvbox" ;;
+    *)            NVIM_THEME="catppuccin-mocha" ;;
+esac
+
+# En la parte donde ejecutas "procesar"
+
 # 6. Función de procesamiento
 procesar() {
     sed -e "s/COLOR_BG/$COLOR_BG/g" \
@@ -41,7 +53,9 @@ procesar "$HOME/.config/alacritty/alacritty.toml.template" "$HOME/.config/alacri
 procesar "$HOME/.config/i3/config.template" "$HOME/.config/i3/config"
 procesar "$HOME/.config/i3status/config.template" "$HOME/.config/i3status/config"
 procesar "$HOME/.config/lf/lfrc.template" "$HOME/.config/lf/lfrc"
-
+procesar "$HOME/.config/dunst/dunstrc.template" "$HOME/.config/dunst/dunstrc"
+dunstctl reload
+sed "s/COLOR_THEME/$NVIM_THEME/g" "$HOME/.config/nvim/lua/colores.lua.template" > "$HOME/.config/nvim/lua/colores.lua"
 # 8. Sincronizar dmenu
 echo "DMENU_THEME=( -nb '$COLOR_BG' -nf '$COLOR_FG' -sb '$COLOR_ACCENT' -sf '$COLOR_BG' -fn 'JetBrainsMono Nerd Font:pixelsize=14' )" > "$HOME/scripts/dmenu/themes/template"
 

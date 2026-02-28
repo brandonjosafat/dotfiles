@@ -23,8 +23,16 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 	-- 1. Tema de colores (relajante)
-	{"catppuccin/nvim", name = "catppuccin", priority = 1000 },
+--	{"catppuccin/nvim", name = "catppuccin", priority = 1000 },
+-- 1. Temas de colores (Añadidos aquí para que Lazy los gestione)
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "sainnhe/everforest" },
+	{ "ellisonleao/gruvbox.nvim" },
+	{ "shaunsingh/nord.nvim" },
+	{ "rose-pine/neovim", name = "rose-pine" }, -- Para el tema Sunset
 
+  -- Plugin para transparencia (opcional, para ver el fondo con blur)
+    { "xiyaowong/transparent.nvim" },
 	-- 2. explorador de archivos
 	{ "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
 
@@ -86,12 +94,12 @@ local lspconfig = require('lspconfig')
 	
 	-- Configuraciones de plugins --
 	-- Activar tema
-	vim.cmd.colorscheme "catppuccin-mocha"
-
+--	vim.cmd.colorscheme "catppuccin-mocha"
+	require('colores')
 	-- Configurar lualine (Barra de abajo)
 require('lualine').setup({
   options = {
-    theme = 'catppuccin', -- Mantiene la estética de tu tema
+    theme = 'auto', -- Mantiene la estética de tu tema
     component_separators = '|',
     section_separators = { left = '', right = '' },
   },
@@ -199,7 +207,7 @@ local action_state = require("telescope.actions.state")
 telescope.setup({
   defaults = {
     -- Ignorar carpetas pesadas y binarios para que sea rápido
-    file_ignore_patterns = { "node_modules", ".git/", "%.jpg", "%.png", "%.jpeg", ".cache/" },
+    file_ignore_patterns = { "node_modules", ".var", ".local", ".cargo", ".git/", "%.jpg", ".config/google-chrome/", ".config/GIMP", ".themes", "%.png", "%.jpeg", ".cache/" },
     mappings = {
       i = {
         ["<CR>"] = function(prompt_bufnr)
@@ -222,3 +230,6 @@ telescope.setup({
     },
   },
 })
+
+vim.opt.cursorline = true -- resalta la linea donde está el cursor
+vim.opt.termguicolors = true -- asegura colores reales de 24 bits.

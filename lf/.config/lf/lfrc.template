@@ -61,14 +61,14 @@ cmd unarchive ${{
 
 # Enviar al basurero con confirmación
 cmd trash_put ${{
-    printf "Enviar a la papelera: $(basename "$f")? [y/N] "
-    read ans
-    if [ "$ans" = "y" ] || [ "$ans" = "Y" ]; then
+    # printf "Enviar a la papelera: $(basename "$f")? [y/N] "
+    # read ans
+    # if [ "$ans" = "y" ] || [ "$ans" = "Y" ]; then
         trash put "$f"
         lf -remote "send $id echo Movido a la papelera"
-    else
-        lf -remote "send $id echo Cancelado"
-    fi
+    # else
+    #     lf -remote "send $id echo Cancelado"
+    # fi
 }}
 
 # Restaurar el último archivo (un-trash)

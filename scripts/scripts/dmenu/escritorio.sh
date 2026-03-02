@@ -6,7 +6,7 @@ source "${CURRENT_THEME:-$HOME/scripts/dmenu/themes/template}"
 
 # 1. Escanear y obtener lista de SSIDs (limpiando el formato de nmcli)
 # Mostramos: Intensidad, Seguridad y Nombre
-opciones="Flow\nLearn" 
+opciones="Flow\nLearn\nI&D" 
 
 seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Set up:")
 
@@ -14,27 +14,29 @@ seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Set up:
 case "$seleccion" in
 	"Flow")
 	# --- Escritorio 1: Neovim con archivos específicos ---
-	i3-msg "workspace 1" # Opcional si usas layouts
+	i3-msg "workspace 2" 
 	# Abrimos nvim con los 3 archivos en pestañas o buffers
-	alacritty -e nvim ~/Documentos/ideas/simulacion.txt ~/Documentos/ideas/contenido.txt &
+	alacritty -e nvim ~/Documentos/ideas/simulacion.txt ~/Documentos/ideas/contenido.txt ~/Documentos/ideas/curso_juiciness.md &
+	# alacritty -e nvim ~/Documentos/ideas/curso_juiciness.md &
 	#Esperar a que la terminal aparezca
 	while [ -z "$(xdotool search --class Alacritty)" ]; do sleep 0.5; done
+	sleep 0.5 #espera para que termine de cargar
 
 	# --- Escritorio 2: Gemini ---
-	i3-msg "workspace 2"
-	google-chrome-stable --new-window "https://gemini.google.com" &
-	while [ -z "$(xdotool search --onlyvisible --class "Google-chrome")" ]; do sleep 0.5; 
-	done
+	# i3-msg "workspace 2"
+	# google-chrome-stable --new-window "https://gemini.google.com" &
+	# while ! xdotool getwindowfocus getwindowname | grep -iq "google\|gemini"; do sleep 0.3 
+	# done
+	# sleep 0.3
 
 	# --- Escritorio 3: YouTube ---
-	i3-msg "workspace 3"
-	google-chrome-stable --new-window "https://youtube.com" &
-	while [ -z "$(xdotool search --class google-chrome-stable)" ]; do sleep 0.5; 
-	done
-
+	# i3-msg "workspace 3"
+	# google-chrome-stable --new-window "https://youtube.com" &
+	# while ! xdotool getwindowfocus getwindowname | grep -iq "youtube"; do sleep 0.3 
+	# done
 
 	# Regresar al escritorio 1 para empezar
-	sleep 0.5
+	# sleep 0.5
 	i3-msg "workspace 1" 
 	;;
 
@@ -47,7 +49,12 @@ case "$seleccion" in
 	#Usamos --app para que se vea más como una herramienta y menos como navegador
 	google-chrome-stable --app="https://www.learnpython.org/en/Welcome" &
 	;;
-# # # 4. (Opcional) Ajustar el layout para que nvim ocupe más espacio
-# # sleep 1
-# # i3-msg "resize set width 60 ppt"
+# 4. (Opcional) Ajustar el layout para que nvim ocupe más espacio
+# sleep 1
+# i3-msg "resize set width 60 ppt"
+	"I&D")
+	i3-msg "workspace 2"
+	alacritty -e nvim ~/Documentos/ideas/curso_juiciness.md &
+	google-chrome-stable & #--new-window "https://gemini.google.com" &
+	;;
 esac

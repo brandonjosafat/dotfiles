@@ -15,6 +15,7 @@ export CURRENT_THEME="$HOME/scripts/dmenu/themes/template"
 # Definimos las opciones con una letra al principio para elegir rápido
 opciones="v -> Neovim\nf -> Firefox\nw -> WiFi\nt -> Temporizador\np -> Power Menu\ns -> screenshot\ni -> inkscape\nc -> apariencia\nn -> notes.sh\ne -> thunar\nk -> krita\nh -> chrome\na -> Set up"
 
+#opciones="a -> Set up\nb -> apariencia\nc -> thunar\nd -> Firefox\ne -> chrome\nf -> inkscape\ng -> krita\nh -> notes.sh\ni -> Power Menu\nj -> screenshot\nk -> Temporizador\nl -> Neovim\nm -> WiFi"
 # Lanzamos dmenu
 # -i (ignorar mayúsculas), -l 10 (lista vertical), -p (el título del menú)
 

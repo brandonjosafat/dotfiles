@@ -207,7 +207,21 @@ local action_state = require("telescope.actions.state")
 telescope.setup({
   defaults = {
     -- Ignorar carpetas pesadas y binarios para que sea rápido
-    file_ignore_patterns = { "node_modules", ".var", ".local", ".cargo", ".git/", "%.jpg", ".config/google-chrome/", ".config/GIMP", ".themes", "%.png", "%.jpeg", ".cache/" },
+    file_ignore_patterns = { 
+		-- "node_modules", ".var", ".local", ".cargo", ".git/", "%.jpg", ".config/google-chrome/", ".config/GIMP", ".themes", "%.png", "%.jpeg", ".cache/" },
+    "node_modules/.*", 
+    "%.var/.*",
+	"%.npm/.*",
+    "%.local/.*", 
+    "%.cargo/.*",
+	"%.mozilla/.*",
+    "%.git/.*", 
+    "%.cache/.*",
+    "google%-chrome/.*", -- El % escapa el guion
+    "GIMP/.*",
+    "%.themes/.*",
+    "%.jpg", "%.png", "%.jpeg" 
+},
     mappings = {
       i = {
         ["<CR>"] = function(prompt_bufnr)
@@ -233,3 +247,4 @@ telescope.setup({
 
 vim.opt.cursorline = true -- resalta la linea donde está el cursor
 vim.opt.termguicolors = true -- asegura colores reales de 24 bits.
+

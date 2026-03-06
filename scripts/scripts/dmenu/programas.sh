@@ -26,6 +26,7 @@ l) sistema.sh
 ñ) wifi.sh
 q) wallpaper.sh
 w) notes.sh
+e) sync.sh
 EOF
 )
 # e) Thunar            -> thunar

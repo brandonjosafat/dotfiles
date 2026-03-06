@@ -12,36 +12,52 @@ source "$HOME/scripts/dmenu/themes/template"
 # así que exportaremos la RUTA del tema para que el hijo haga su propio source.
 export CURRENT_THEME="$HOME/scripts/dmenu/themes/template"
 
-# Definimos las opciones con una letra al principio para elegir rápido
-opciones="v -> Neovim\nf -> Firefox\nw -> WiFi\nt -> Temporizador\np -> Power Menu\ns -> screenshot\ni -> inkscape\nc -> apariencia\nn -> notes.sh\ne -> thunar\nk -> krita\nh -> chrome\na -> Set up"
+# 2. DEFINICIÓN DE OPCIONES (Aquí es donde editas)
+# Solo editas esta lista. El formato es: letra) comando
+# Usamos un bloque de texto limpio para que dmenu lo lea.
+menu_data=$(cat <<EOF
+a) cronometro.sh
+s) escritorio.sh
+d) google-chrome-stable
+f) alacritty -e nvim
+j) apariencia.sh
+k) captura.sh
+l) sistema.sh
+ñ) wifi.sh
+q) wallpaper.sh
+w) notes.sh
+EOF
+)
+# e) Thunar            -> thunar
+# i) Inkscape          -> inkscape
+# n) Notes             -> notes.sh
 
-#opciones="a -> Set up\nb -> apariencia\nc -> thunar\nd -> Firefox\ne -> chrome\nf -> inkscape\ng -> krita\nh -> notes.sh\ni -> Power Menu\nj -> screenshot\nk -> Temporizador\nl -> Neovim\nm -> WiFi"
 # Lanzamos dmenu
 # -i (ignorar mayúsculas), -l 10 (lista vertical), -p (el título del menú)
 
 #seleccionado=$(echo -e "$opciones" | dmenu -i -l 10 -p "Ejecutar:")
-seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Ejecutar:")
+# seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Ejecutar:")
+
 # Extraemos solo la primera letra para el caso (case)
-accion=$(echo "$seleccion" | cut -d' ' -f1)
+# accion=$(echo "$seleccion" | cut -d' ' -f1)
+# Lanzamos dmenu (opciones ya tiene los saltos de línea internos)
+# seleccion=$(echo "$opciones" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Ejecutar:")
+# 3. EJECUCIÓN DE DMENU
+# Mostramos la lista y guardamos la línea elegida
+seleccion=$(echo "$menu_data" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Ejecutar:")
 
-case "$accion" in
+# Si el usuario presiona ESC o no elige nada, salimos
+[ -z "$seleccion" ] && exit 0
 
-    v) alacritty -e nvim ;;
-    f) firefox ;;
-	h) google-chrome-stable ;;
-	i) inkscape ;;
-	e) thunar ;;
-    a) escritorio.sh ;; 
-	k) krita ;;
-    w) wifi.sh ;; 
-	t) cronometro.sh ;; 
-    p) sistema.sh ;;
-	s) screenshot.sh ;; 
-	#c) carpetas.sh ;; #pendiente
-	n) notes.sh ;; #pendiente
-	c) apariencia.sh ;;
-	*) exit 1 ;;
+# 4. EXTRACCIÓN DEL COMANDO
+# Aquí ocurre la "magia": buscamos la línea elegida y cortamos después de "-> "
+ejecutar=$(echo "$seleccion" | awk -F') ' '{print $2}' | xargs)
 
-esac
+# 5. EJECUCIÓN FINAL
+# Ejecutamos el comando recuperado
+eval "$ejecutar" &
+# Extraemos la letra
+
+# accion=$(echo "$seleccion" | cut -d' ' -f1)
 
 

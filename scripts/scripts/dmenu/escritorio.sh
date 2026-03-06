@@ -6,41 +6,40 @@ source "${CURRENT_THEME:-$HOME/scripts/dmenu/themes/template}"
 
 # 1. Escanear y obtener lista de SSIDs (limpiando el formato de nmcli)
 # Mostramos: Intensidad, Seguridad y Nombre
-opciones="Flow\nLearn\nI&D" 
+opciones="a) Project\ns) Learn\nd) I&D" 
 
 seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Set up:")
 
 # Lógica de ejecución
 case "$seleccion" in
-	"Flow")
+	"a) Project")
 	# --- Escritorio 1: Neovim con archivos específicos ---
-	i3-msg "workspace 2" 
+	i3-msg "workspace 1" 
 	# Abrimos nvim con los 3 archivos en pestañas o buffers
-	alacritty -e nvim ~/Documentos/ideas/simulacion.txt ~/Documentos/ideas/contenido.txt ~/Documentos/ideas/curso_juiciness.md &
-	# alacritty -e nvim ~/Documentos/ideas/curso_juiciness.md &
+	alacritty -e nvim ~/Documentos/ideas/juiciness.md &
 	#Esperar a que la terminal aparezca
 	while [ -z "$(xdotool search --class Alacritty)" ]; do sleep 0.5; done
 	sleep 0.5 #espera para que termine de cargar
 
 	# --- Escritorio 2: Gemini ---
-	# i3-msg "workspace 2"
-	# google-chrome-stable --new-window "https://gemini.google.com" &
-	# while ! xdotool getwindowfocus getwindowname | grep -iq "google\|gemini"; do sleep 0.3 
-	# done
-	# sleep 0.3
+	i3-msg "workspace 2"
+	google-chrome-stable --new-window "https://gemini.google.com" &
+	while ! xdotool getwindowfocus getwindowname | grep -iq "google\|gemini"; do sleep 0.3 
+	done
+	sleep 0.3
 
 	# --- Escritorio 3: YouTube ---
-	# i3-msg "workspace 3"
-	# google-chrome-stable --new-window "https://youtube.com" &
-	# while ! xdotool getwindowfocus getwindowname | grep -iq "youtube"; do sleep 0.3 
-	# done
+	i3-msg "workspace 3"
+	google-chrome-stable --new-window "https://youtube.com" &
+	while ! xdotool getwindowfocus getwindowname | grep -iq "youtube"; do sleep 0.3 
+	done
 
 	# Regresar al escritorio 1 para empezar
 	# sleep 0.5
 	i3-msg "workspace 1" 
 	;;
 
-	"Learn")
+	"s) Learn")
 	# 2. Abrir curso.py en el Escritorio 1
 	i3-msg "workspace 2"
 	alacritty -e nvim ~/scripts/python/curso.py &
@@ -52,9 +51,10 @@ case "$seleccion" in
 # 4. (Opcional) Ajustar el layout para que nvim ocupe más espacio
 # sleep 1
 # i3-msg "resize set width 60 ppt"
-	"I&D")
-	i3-msg "workspace 2"
-	alacritty -e nvim ~/Documentos/ideas/curso_juiciness.md &
+#
+	"d) I&D")
+	# i3-msg "workspace 2"
+	alacritty -e nvim &
 	google-chrome-stable & #--new-window "https://gemini.google.com" &
-	;;
+	;; 
 esac

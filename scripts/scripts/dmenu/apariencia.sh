@@ -5,7 +5,7 @@ source "$HOME/scripts/dmenu/themes/template"
 
 # 2. El usuario elige el tema
 opciones=$(ls "$HOME/themes/paletas/")
-seleccion=$(echo -e "$opciones" | dmenu -i "${DMENU_THEME[@]}" -p "Seleccionar tema:")
+seleccion=$(echo -e "$opciones" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Seleccionar tema:")
 
 # 3. Si no hay selección, salir
 [ -z "$seleccion" ] && exit 0

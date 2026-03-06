@@ -1,11 +1,11 @@
 # Archivo: alacritty.toml.template
 [colors.primary]
-background = "#2e3440"
-foreground = "#eceff4"
+background = "#2d353b"
+foreground = "#d3c6aa"
 
 [colors.selection]
-text = "#3b4252"
-background = "#88c0d0"
+text = "#475258"
+background = "#a7c080"
 
 [window] #1.0 es opaco, 0.0 es invisible.
 opacity = 0.90

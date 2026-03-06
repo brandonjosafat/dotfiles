@@ -9,16 +9,22 @@ source "${CURRENT_THEME:-$HOME/scripts/dmenu/themes/catppuccin}"
 # MINUTES=$(echo -e "1\n5\n25" | dmenu "${DMENU_THEME[@]}" -p "Minutos:")
 
 # opciones="a -> 1\ns -> 5\nd -> 10\nf -> 15\ng -> 25" #| dmenu "${DMENU_THEME[@]}" -p "Minutos:")
-opciones="Flow\nRest"
+opciones="a)Flow\ns)Walk"
+# opciones=$(cat <<EOF
+# a Flow
+# s Walk
+# EOF
+# )
+
 seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Minutes:")
 
 accion=$(echo "$seleccion" | cut -d' ' -f1)
-# [[ -z "$MINUTES" ]] && exit 0
-# [[ "$MINUTES" =~ ^[0-9]+$ ]] || exit 0
+ # [[ -z "$MINUTES" ]] && exit 0
+ # [[ "$MINUTES" =~ ^[0-9]+$ ]] || exit 0
 #Lógica de ejecución
 case "$accion" in
-	"Flow") MINUTES=25 ;;
-	"Rest") MINUTES=5 ;;
+	"a)Flow") MINUTES=25 ;;
+	"s)Walk") MINUTES=5 ;;
 	# d) MINUTES=10 ;;
 	# f) MINUTES=15 ;;
 	# g) MINUTES=25 ;;

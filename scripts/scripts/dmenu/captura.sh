@@ -5,17 +5,23 @@
 source "${CURRENT_THEME:-$HOME/scripts/dmenu/themes/template}"
 
 # 1. Definimos las opciones que verá el usuario
-opciones="󰹑 Pantalla Completa\n󰒅 Seleccionar Área\n󱎫 Retraso (5s)"
-
+#opciones="󰹑 Pantalla Completa\n󰒅 Seleccionar Área\n󱎫 Retraso (5s)"
+opciones=$(cat <<EOF
+a) 󰹑 Pantalla Completa
+s) 󰒅 Seleccionar Área
+d) 󱎫 Retraso (5s)"
+EOF
+)
 # 2. Pasamos las opciones a dmenu y guardamos la elección
-seleccion=$(echo -e "$opciones" | dmenu -i "${DMENU_THEME[@]}" -p "Captura:")
+seleccion=$(echo -e "$opciones" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Captura:")
 
 # 3. Lógica de ejecución
 case "$seleccion" in
-    "󰹑 Pantalla Completa")
+	"a) 󰹑 Pantalla Completa")
         scrot '%Y-%m-%d-%T.png' -e 'mv $f ~/Imágenes/Capturas/' ;;
-    "󰒅 Seleccionar Área")
+	"s) 󰒅 Seleccionar Área")
         scrot -s '%Y-%m-%d-%T.png' -e 'mv $f ~/Imágenes/Capturas/' ;;
-    "󱎫 Retraso (5s)")
+	"d) 󱎫 Retraso (5s)")
         sleep 5 && scrot '%Y-%m-%d-%T.png' -e 'mv $f ~/Imágenes/Capturas/' ;;
 esac
+

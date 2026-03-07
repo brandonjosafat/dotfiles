@@ -46,7 +46,8 @@ case "$seleccion" in
 
 	# 3. Abrir la plataforma de Python al lado de nvim (i3 dividirá la pantalla)
 	#Usamos --app para que se vea más como una herramienta y menos como navegador
-	google-chrome-stable --app="https://www.learnpython.org/en/Welcome" &
+	# google-chrome-stable --app="https://www.learnpython.org/en/Welcome" &
+	google-chrome-stable --new-window "https://www.learnpython.org/en/Welcome" &
 	;;
 # 4. (Opcional) Ajustar el layout para que nvim ocupe más espacio
 # sleep 1

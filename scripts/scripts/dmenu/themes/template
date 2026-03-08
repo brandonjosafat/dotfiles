@@ -1,1 +1,1 @@
-DMENU_THEME=( -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#2e3440' -fn 'JetBrainsMono Nerd Font:pixelsize=14' )
+DMENU_THEME=( -nb '#282828' -nf '#ebdbb2' -sb '#d79921' -sf '#282828' -fn 'JetBrainsMono Nerd Font:pixelsize=14' )

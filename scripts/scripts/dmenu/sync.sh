@@ -23,6 +23,6 @@ git push origin main
 
 #4. Notificación final
 if [ $? -eq 0 ]; then 
-	notify-send "Dotfiles" "sincronización exitosa y pushrealizado" -i system-software-update
+	notify-send "Dotfiles" "sincronización exitosa y push realizado" -i system-software-update
 else notify-send "Dotfiles" "Error en la sincronización" -u critical
 fi

@@ -28,6 +28,7 @@ q) wallpaper.sh
 w) notes.sh
 e) sync.sh
 r) rclone.sh
+u) calculadora.sh
 EOF
 )
 # e) Thunar            -> thunar

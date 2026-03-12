@@ -15,6 +15,7 @@ export MY_THEMES="$HOME/scripts/dmenu/themes"
 export PATH="$HOME/.cargo/bin:$PATH"
 export LS_COLORS=$LS_COLORS:'ow=01;34:tw=01;34:'
 
+
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi

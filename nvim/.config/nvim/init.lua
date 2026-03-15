@@ -248,3 +248,35 @@ telescope.setup({
 vim.opt.cursorline = true -- resalta la linea donde está el cursor
 vim.opt.termguicolors = true -- asegura colores reales de 24 bits.
 
+
+-- Configuración de ruta (asegúrate de que termine en /)
+local ideas_dir = "/home/brandon/Documentos/ideas/"
+
+-- 1. Función principal para abrir o crear la nota
+local function abrir_idea(opts)
+    local nombre = opts.args
+    if nombre == "" then
+        print("Debes escribir un nombre para la nota")
+        return
+    end
+    
+    -- Construir ruta completa
+    local ruta_completa = ideas_dir .. nombre
+    vim.cmd("edit " .. ruta_completa)
+end
+
+-- 2. Crear el comando de usuario con autocompletado de archivos
+vim.api.nvim_create_user_command('Idea', abrir_idea, {
+    nargs = 1,
+    complete = function(ArgLead, CmdLine, CursorPos)
+        -- Escanea la carpeta de ideas
+        local files = vim.fn.readdir(ideas_dir)
+        -- Filtra los archivos que coincidan con lo que vas escribiendo (ArgLead)
+        return vim.tbl_filter(function(file)
+            return file:match('^' .. ArgLead)
+        end, files)
+    end
+})
+
+-- 3. Mapeo rápido (Leader + ni de "Nueva Idea")
+vim.keymap.set('n', '<leader>ni', ':Idea ', { desc = 'Abrir/Crear nota en Ideas' })

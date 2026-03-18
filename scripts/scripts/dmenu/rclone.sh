@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Configuración
-Project="$HOME/Documentos/ideas/juiciness.md"
+# Project="$HOME/Documentos/ideas/juiciness.md"
+Project="$HOME/Documentos/ideas/"
 RemoteDest="drive-personal:Deb/Documentos/ideas/"
 
 # Ejecución con verificación de estado

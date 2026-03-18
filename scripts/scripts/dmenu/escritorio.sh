@@ -41,7 +41,7 @@ case "$seleccion" in
 
 	"s) Learn")
 	# 2. Abrir curso.py en el Escritorio 1
-	i3-msg "workspace 2"
+	# i3-msg "workspace 2"
 	alacritty -e nvim ~/scripts/python/curso.py &
 
 	# 3. Abrir la plataforma de Python al lado de nvim (i3 dividirá la pantalla)

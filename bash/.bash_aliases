@@ -45,3 +45,22 @@ a_win() {
         -not -path "$dir" \
         -exec du -sh {} +
 }
+
+
+# Agrega esto a tu ~/.bashrc
+plan() {
+    clear
+    ncal -b             # Muestra mes anterior, actual y siguiente
+    echo -e "\n--- PENDIENTES DE LA SEMANA ---"
+    # batcat ~/Documentos/ideas/bitacora.md
+    glow ~/Documentos/ideas/bitacora.md
+}
+
+today() {
+    clear
+    # ncal -b             # Muestra mes anterior, actual y siguiente
+	date +%T #Muestra solo la hora
+    echo -e "\n--- Rurūshu vi Buritania ga meijiru... ---"
+    # batcat ~/Documentos/ideas/bitacora.md
+    glow ~/Documentos/ideas/today.md
+}

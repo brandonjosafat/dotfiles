@@ -7,7 +7,10 @@ alias gtp='git push origin main'
 alias ..='cd ..'
 alias ...='cd ../../'
 alias ..l='.. && ll'
+alias cal='ncal -b'
 
+alias tibia='./otros/Tibia/Tibia > /dev/null 2>&1 &'
+alias programas='./scripts/dmenu/programas.sh'
 
 files() {
 	#sino indico carpeta ($1) usa el directorio actual
@@ -53,7 +56,7 @@ plan() {
     ncal -b             # Muestra mes anterior, actual y siguiente
     echo -e "\n--- PENDIENTES DE LA SEMANA ---"
     # batcat ~/Documentos/ideas/bitacora.md
-    glow ~/Documentos/ideas/bitacora.md
+    glow ~/Documentos/planning/bitacora.md
 }
 
 today() {
@@ -62,5 +65,5 @@ today() {
 	date +%T #Muestra solo la hora
     echo -e "\n--- Rurūshu vi Buritania ga meijiru... ---"
     # batcat ~/Documentos/ideas/bitacora.md
-    glow ~/Documentos/ideas/today.md
+    glow ~/Documentos/planning/today.md
 }

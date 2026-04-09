@@ -29,22 +29,15 @@ w) notes.sh
 e) sync.sh
 r) rclone.sh
 u) calculadora.sh
+i) recordatorio.sh
+o) session.sh
+p) kdenlive
+z) krita
+x) inkscape
+c) waylus
+v) syncthing
 EOF
 )
-# e) Thunar            -> thunar
-# i) Inkscape          -> inkscape
-# n) Notes             -> notes.sh
-
-# Lanzamos dmenu
-# -i (ignorar mayúsculas), -l 10 (lista vertical), -p (el título del menú)
-
-#seleccionado=$(echo -e "$opciones" | dmenu -i -l 10 -p "Ejecutar:")
-# seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Ejecutar:")
-
-# Extraemos solo la primera letra para el caso (case)
-# accion=$(echo "$seleccion" | cut -d' ' -f1)
-# Lanzamos dmenu (opciones ya tiene los saltos de línea internos)
-# seleccion=$(echo "$opciones" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Ejecutar:")
 # 3. EJECUCIÓN DE DMENU
 # Mostramos la lista y guardamos la línea elegida
 seleccion=$(echo "$menu_data" | dmenu -i -l 15 "${DMENU_THEME[@]}" -p "Ejecutar:")

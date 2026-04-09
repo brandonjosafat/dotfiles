@@ -168,7 +168,7 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
-
+vim.cmd('syntax on')
 -- Función para ejecutar el archivo según su tipo
 local function ejecutar_archivo()
 	vim.cmd("silent w") -- siempre guarda antes de ejecutar
@@ -280,3 +280,36 @@ vim.api.nvim_create_user_command('Idea', abrir_idea, {
 
 -- 3. Mapeo rápido (Leader + ni de "Nueva Idea")
 vim.keymap.set('n', '<leader>ni', ':Idea ', { desc = 'Abrir/Crear nota en Ideas' })
+
+
+-- Configuración de ruta (asegúrate de que termine en /)
+local planning_dir = "/home/brandon/Documentos/planning/"
+
+-- 1. Función principal para abrir o crear la nota
+local function abrir_planning(opts)
+    local nombre = opts.args
+    if nombre == "" then
+        print("Debes escribir un nombre para la actividad")
+        return
+    end
+    
+    -- Construir ruta completa
+    local ruta_completa = planning_dir .. nombre
+    vim.cmd("edit " .. ruta_completa)
+end
+
+-- 2. Crear el comando de usuario con autocompletado de archivos
+vim.api.nvim_create_user_command('Plan', abrir_planning, {
+    nargs = 1,
+    complete = function(ArgLead, CmdLine, CursorPos)
+        -- Escanea la carpeta de ideas
+        local files = vim.fn.readdir(planning_dir)
+        -- Filtra los archivos que coincidan con lo que vas escribiendo (ArgLad)
+        return vim.tbl_filter(function(file)
+            return file:match('^' .. ArgLead)
+        end, files)
+    end
+})
+
+-- 3. Mapeo rápido (Leader + ni de "Nueva Idea")
+vim.keymap.set('n', '<leader>pl', ':Plan ', { desc = 'Abrir/Crear nota en Plan' })

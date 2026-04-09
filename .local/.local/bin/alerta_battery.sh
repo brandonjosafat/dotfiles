@@ -14,10 +14,11 @@ ESTADO=$(echo "$BATERIA_INFO" | grep -P -o 'Discharging|Charging|Full' | head -1
 # # Si la capacidad es menor o igual al umbral
 if [ "$CAPACIDAD" -le "$UMBRAL" ] && [ "$ESTADO" != "Charging" ]; then
         # Notificación visual (siempre sale mientras sea menor al umbral)
-    /usr/bin/notify-send "Batería Crítica" "Nivel actual: $CAPACIDAD%"
+    # /usr/bin/notify-send "Batería Crítica" "Nivel actual: $CAPACIDAD%"
 
     
     # Sonido (usando ALSA explícitamente por si acaso)
-    /usr/bin/play -n -c1 synth 1 sine 440 vol 1 > /dev/null 2>&1
-
+    # /usr/bin/play -n -c1 synth 1 sine 440 vol 1 > /dev/null 2>&1
+	# Invocamos el script centralizador con urgencia crítica
+    $HOME/scripts/utils/notificar_sonido.sh "Batería Crítica" "Nivel actual: $CAPACIDAD%" "critical"
 fi

@@ -61,7 +61,7 @@ plan() {
 
 today() {
     clear
-    # ncal -b             # Muestra mes anterior, actual y siguiente
+    ncal -b             # Muestra mes anterior, actual y siguiente
 	date +%T #Muestra solo la hora
     echo -e "\n--- Rurūshu vi Buritania ga meijiru... ---"
     # batcat ~/Documentos/ideas/bitacora.md

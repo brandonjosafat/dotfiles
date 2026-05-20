@@ -6,7 +6,7 @@ source "${CURRENT_THEME:-$HOME/scripts/dmenu/themes/template}"
 
 # 1. Escanear y obtener lista de SSIDs (limpiando el formato de nmcli)
 # Mostramos: Intensidad, Seguridad y Nombre
-opciones="a) Project\ns) Learn\nd) I&D\nf) Creativity" 
+opciones="a) Project\ns) Learn\nd) I&D\nf) Current" 
 
 seleccion=$(echo -e "$opciones" | dmenu -i -l 10 "${DMENU_THEME[@]}" -p "Set up:")
 
@@ -16,7 +16,7 @@ case "$seleccion" in
 	# --- Escritorio 1: Neovim con archivos específicos ---
 	i3-msg "workspace 1" 
 	# Abrimos nvim con los 3 archivos en pestañas o buffers
-	alacritty -e nvim ~/Documentos/ideas/current.md &
+	alacritty -e nvim ~/Documentos/ideas/curso.md &
 	# Para abrir 2 archivos:
 	# alacritty -e nvim ~/Documentos/ideas/content.md ~/Documentos/ideas/current.md &
 	
@@ -67,10 +67,18 @@ case "$seleccion" in
 	google-chrome-stable & #--new-window "https://gemini.google.com" &
 	;; 
 	
-	"f) Creativity")
-	# i3-msg "workspace 2"
-	# krita &
-	inkscape &
-	;; 
+	"f) Current")
+	i3-msg "workspace 2"
+	google-chrome-stable &
+	while ! xdotool getwindowfocus getwindowname | grep -iq "google"; do sleep 0.3 
+	done
+	sleep 0.3
+
+	# Regresar al escritorio 1 para empezar
+	i3-msg "workspace 1" 
+	alacritty &
+	;;
+
+
 
 esac

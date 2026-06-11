@@ -11,6 +11,7 @@ alias cal='ncal -b'
 
 alias tibia='./otros/Tibia/Tibia > /dev/null 2>&1 &'
 alias programas='./scripts/dmenu/programas.sh'
+alias open='xdg-open'
 
 files() {
 	#sino indico carpeta ($1) usa el directorio actual
